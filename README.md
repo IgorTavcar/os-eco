@@ -3,10 +3,11 @@
 [![Mulch CI](https://github.com/jayminwest/mulch/actions/workflows/ci.yml/badge.svg)](https://github.com/jayminwest/mulch/actions/workflows/ci.yml)
 [![Seeds CI](https://github.com/jayminwest/seeds/actions/workflows/ci.yml/badge.svg)](https://github.com/jayminwest/seeds/actions/workflows/ci.yml)
 [![Canopy CI](https://github.com/jayminwest/canopy/actions/workflows/ci.yml/badge.svg)](https://github.com/jayminwest/canopy/actions/workflows/ci.yml)
+[![Sapling CI](https://github.com/jayminwest/sapling/actions/workflows/ci.yml/badge.svg)](https://github.com/jayminwest/sapling/actions/workflows/ci.yml)
 [![Overstory CI](https://github.com/jayminwest/overstory/actions/workflows/ci.yml/badge.svg)](https://github.com/jayminwest/overstory/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-An integrated ecosystem of CLI tools for AI agent workflows. Each tool handles one concern — expertise, issues, prompts, or orchestration — and they compose together so multi-agent teams can operate autonomously on real codebases.
+An integrated ecosystem of CLI tools for AI agent workflows. Each tool handles one concern — expertise, issues, prompts, agents, or orchestration — and they compose together so multi-agent teams can operate autonomously on real codebases.
 
 <p align="center">
   <img src="branding/logo.png" alt="os-eco" width="444" />
@@ -19,39 +20,41 @@ An integrated ecosystem of CLI tools for AI agent workflows. Each tool handles o
 | [**Mulch**](https://github.com/jayminwest/mulch) | `mulch` / `ml` | [![npm](https://img.shields.io/npm/v/@os-eco/mulch-cli)](https://www.npmjs.com/package/@os-eco/mulch-cli) | Structured expertise management — agents record conventions, patterns, and decisions as they work, then retrieve them at the start of each session |
 | [**Seeds**](https://github.com/jayminwest/seeds) | `sd` | [![npm](https://img.shields.io/npm/v/@os-eco/seeds-cli)](https://www.npmjs.com/package/@os-eco/seeds-cli) | Git-native issue tracking — JSONL storage, dependency graphs, templates, zero external dependencies |
 | [**Canopy**](https://github.com/jayminwest/canopy) | `cn` | [![npm](https://img.shields.io/npm/v/@os-eco/canopy-cli)](https://www.npmjs.com/package/@os-eco/canopy-cli) | Prompt management — version-controlled prompt composition with inheritance, pinning, and schema validation |
+| [**Sapling**](https://github.com/jayminwest/sapling) | `sp` | [![npm](https://img.shields.io/npm/v/@os-eco/sapling-cli)](https://www.npmjs.com/package/@os-eco/sapling-cli) | Headless coding agent — proactive context management between every LLM call, pluggable backends |
 | [**Overstory**](https://github.com/jayminwest/overstory) | `overstory` / `ov` | [![npm](https://img.shields.io/npm/v/@os-eco/overstory-cli)](https://www.npmjs.com/package/@os-eco/overstory-cli) | Multi-agent orchestration — spawn Claude Code agents in git worktrees via tmux, coordinate through SQLite mail, merge with conflict resolution |
 
 ## How they fit together
 
 ```
 overstory (orchestrates agents)
+  ├── sapling  (headless coding agent runtime)
   ├── mulch    (stores expertise for agents)
   ├── seeds    (tracks issues agents work on)
   └── canopy   (manages prompts agents use)
 ```
 
-Overstory spawns Claude Code agents in isolated git worktrees. Those agents pick up work from Seeds, load project expertise from Mulch, and access managed prompts from Canopy. All four tools share the same design principles:
+Overstory spawns agents (including Sapling) in isolated git worktrees. Those agents pick up work from Seeds, load project expertise from Mulch, and access managed prompts from Canopy. All five tools share the same design principles:
 
 - **Git-native storage** — JSONL and YAML files that live in your repo, merge cleanly, and need no external database
 - **Zero runtime dependencies** — each tool is a single Bun binary with no daemon or server
 - **Multi-agent safe** — advisory file locking so concurrent agents don't corrupt shared state
 - **CLI-first** — every operation is a shell command with `--json` output for scripting and piping
-- **Consistent UX** — shared color palette, status icons, help screen layout, and flag conventions across all four tools
+- **Consistent UX** — shared color palette, status icons, help screen layout, and flag conventions across all five tools
 
 ## Quick start
 
 Requires [Bun](https://bun.sh/) >= 1.0.
 
 ```bash
-# Install all four tools
-bun install -g @os-eco/mulch-cli @os-eco/seeds-cli @os-eco/canopy-cli @os-eco/overstory-cli
+# Install all five tools
+bun install -g @os-eco/mulch-cli @os-eco/seeds-cli @os-eco/canopy-cli @os-eco/sapling-cli @os-eco/overstory-cli
 
 # Initialize in your project
 cd your-project
 ml init && sd init && cn init && ov init
 
 # Verify
-ml --version && sd --version && cn --version && ov --version
+ml --version && sd --version && cn --version && sp version && ov --version
 ```
 
 Or install individually — each tool works standalone:
@@ -89,6 +92,7 @@ os-eco/
   mulch/           # sub-repo: @os-eco/mulch-cli
   seeds/           # sub-repo: @os-eco/seeds-cli
   canopy/          # sub-repo: @os-eco/canopy-cli
+  sapling/         # sub-repo: @os-eco/sapling-cli
   overstory/       # sub-repo: @os-eco/overstory-cli
   branding/        # shared visual spec, CLI standards, checklists
   .mulch/          # ecosystem-level expertise
@@ -104,6 +108,7 @@ os-eco/
 cd mulch && bun test && bun run lint && bun run typecheck
 cd seeds && bun test && bun run lint && bun run typecheck
 cd canopy && bun test && bun run lint && bun run typecheck
+cd sapling && bun test && bun run lint && bun run typecheck
 cd overstory && bun test && bun run lint && bun run typecheck
 
 # Check ecosystem health

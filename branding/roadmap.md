@@ -28,7 +28,7 @@ Each tool copies/bundles what it needs at build time, preserving the zero-runtim
 Alternatively, just import directly since Bun resolves workspace deps at runtime anyway.
 
 ### When to build this
-All four tools now use commander + chalk. Patterns have largely converged:
+All five tools now use commander + chalk. Patterns have largely converged:
 - Common output helpers: `printSuccess()`, `printError()`, `printWarning()`
 - Shared palette: brand color + accent (amber) + muted (stone gray)
 - Status icon set D: `- > x !`
@@ -40,7 +40,7 @@ All four tools now use commander + chalk. Patterns have largely converged:
 
 ## CI Parity
 
-All four repos should use an identical GitHub Actions workflow structure. Seeds already has CI + auto-publish to npm.
+All five repos should use an identical GitHub Actions workflow structure. Seeds already has CI + auto-publish to npm.
 
 ```yaml
 # .github/workflows/ci.yml
@@ -90,7 +90,7 @@ $ sd list --timing
 - Output goes to stderr (doesn't interfere with `--json` piping)
 - Format: `Done in <N>ms` in muted text
 
-**Status:** Complete across all four tools.
+**Status:** Complete across all five tools.
 
 ---
 
@@ -115,17 +115,18 @@ This requires:
 
 ## Shell Completions — Done
 
-All four tools now ship completions for bash, zsh, and fish via a `completions <shell>` subcommand.
+All five tools now ship completions for bash, zsh, and fish via a `completions <shell>` subcommand.
 
 ```bash
 # Generate and install
 sd completions zsh > ~/.zfunc/_sd
 cn completions bash > /etc/bash_completion.d/cn
 mulch completions fish > ~/.config/fish/completions/mulch.fish
-ov --completions zsh > ~/.zfunc/_ov
+ov completions zsh > ~/.zfunc/_ov
+sp completions fish > ~/.config/fish/completions/sp.fish
 ```
 
-**Status:** Complete across all four tools.
+**Status:** Complete across all five tools.
 
 ---
 
@@ -167,17 +168,18 @@ Flags:
 
 ## ov ecosystem Command — Done
 
-Dashboard showing the full ecosystem status (implemented in v0.6.11):
+Dashboard showing the full ecosystem status (implemented in v0.7.4):
 
 ```
 os-eco ecosystem status
 
 Tool          Version    Status     Health
 ─────────────────────────────────────────────
-mulch    ml   0.6.2      - latest   ✓ 8/8 checks
-seeds    sd   0.2.4      - latest   ✓ 9/9 checks
-canopy   cn   0.2.0      - latest   ✓ 8/8 checks
-overstory ov  0.6.11     - latest   ✓ 10/10 checks
+mulch    ml   0.6.3      - latest   ✓ 8/8 checks
+seeds    sd   0.2.5      - latest   ✓ 9/9 checks
+sapling  sp   0.3.0      - latest   ✓ 3/3 checks
+canopy   cn   0.2.1      - latest   ✓ 8/8 checks
+overstory ov  0.8.4      - latest   ✓ 11/11 checks
 
 Last sync: 2 minutes ago
 Active agents: 3  |  Open issues: 12  |  Prompts: 7

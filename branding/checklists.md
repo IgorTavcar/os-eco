@@ -1,11 +1,11 @@
 # Implementation Checklists
 
 Per-tool TODO lists. Check items off as work is completed.
-Last verified: 2026-02-25 (scouted each sub-repo individually).
+Last verified: 2026-03-04 (full audit with per-file evidence).
 
 ---
 
-## Mulch (v0.6.2)
+## Mulch (v0.6.3)
 
 ### Branding — Complete
 - [x] Apply forest palette (brand: `rgb(139, 90, 43)`, accent, muted) — done (v0.6.0, palette.ts)
@@ -33,7 +33,7 @@ Last verified: 2026-02-25 (scouted each sub-repo individually).
 
 ---
 
-## Seeds (v0.2.4) — Fully Complete
+## Seeds (v0.2.5) — Fully Complete
 
 ### Branding — Complete
 - [x] Apply forest palette (brand: `rgb(124, 179, 66)`, accent, muted) — done (v0.2.2)
@@ -61,7 +61,7 @@ Last verified: 2026-02-25 (scouted each sub-repo individually).
 
 ---
 
-## Canopy (v0.2.0) — Fully Complete
+## Canopy (v0.2.1) — Fully Complete
 
 ### Branding — Complete
 - [x] Apply forest palette (brand: `rgb(56, 142, 60)`, accent, muted) — done (v0.1.5)
@@ -84,11 +84,11 @@ Last verified: 2026-02-25 (scouted each sub-repo individually).
 
 ---
 
-## Overstory (v0.6.11) — Fully Complete
+## Overstory (v0.8.4) — Fully Complete
 
 ### Branding — Complete
-- [x] Apply forest palette (brand: `rgb(27, 94, 32)`, accent, muted) — done (v0.6.3, color.ts)
-- [x] Adopt help screen style A (see visual-spec.md) — done (v0.6.8, branded header in index.ts)
+- [x] Apply forest palette (brand: `rgb(46, 125, 50)`, accent, muted) — done (v0.6.3, color.ts)
+- [x] Adopt help screen style A (see visual-spec.md) — done (v0.6.8, branded header in index.ts, verified v0.8.4)
 - [x] Adopt status icon set D (`- > x !`) — done (v0.6.6, migrated dashboard + all commands)
 - [x] Adopt message format standards (`✓ ✗ !`) — done (v0.6.6, fmt helpers in color.ts)
 
@@ -101,14 +101,48 @@ Last verified: 2026-02-25 (scouted each sub-repo individually).
 - [x] Add `--verbose` global flag — done (v0.6.8, index.ts)
 - [x] Add shell completions (`completions <shell>`) — done (bash/zsh/fish, completions.ts)
 - [x] Add typo suggestions for unknown commands — done (Levenshtein in index.ts)
-- [x] Add `--timing` flag — done (v0.6.11, global flag, outputs to stderr)
-- [x] Wrap JSON output in `{ success, command }` envelope — done (v0.6.10, json.ts with jsonOutput/jsonError helpers)
-- [x] Switch to `process.exitCode = 1` (no hard exit) — done (v0.6.10, primary pattern; process.exit(0) only for SIGINT cleanup)
+- [x] Add `--timing` flag — done (v0.7.4, global flag, outputs to stderr)
+- [x] Wrap JSON output in `{ success, command }` envelope — done (v0.7.4, json.ts with jsonOutput/jsonError helpers)
+- [x] Switch to `process.exitCode = 1` (no hard exit) — done (v0.7.4, primary pattern; process.exit(0) only for SIGINT cleanup and --version --json early exit)
 
 ### Commands — Complete
-- [x] Add `ov upgrade` command (self-update + `--all` for sibling tools) — done (v0.6.10, with `--check`, `--all`, `--json`)
-- [x] Add ecosystem version check to `ov doctor` (check mulch/seeds/canopy) — done (v0.6.10, ecosystem check category)
-- [x] Implement `ov ecosystem` dashboard command — done (v0.6.10, registered via addCommand)
+- [x] Add `ov upgrade` command (self-update + `--all` for sibling tools) — done (v0.7.4, with `--check`, `--all`, `--json`)
+- [x] Add ecosystem version check to `ov doctor` (check mulch/seeds/canopy) — done (v0.7.4, ecosystem check category)
+- [x] Implement `ov ecosystem` dashboard command — done (v0.7.4, registered via addCommand)
+
+---
+
+## Sapling (v0.3.0) — Fully Complete
+
+### Branding
+- [x] Apply forest palette (brand: `rgb(76, 175, 80)`, accent, muted) — done (v0.1.1, color.ts with exact RGB)
+- [x] Adopt help screen style A (see visual-spec.md) — done (v0.3.0, brand.bold in index.ts)
+- [x] Adopt status icon set D (`- > x !`) — done (v0.1.1, icons object in color.ts, verified v0.3.0)
+- [x] Adopt message format standards (`✓ ✗ !`) — done (v0.1.1, printSuccess/Error/Warning in color.ts, verified v0.3.0)
+
+### CLI Standards
+- [x] Migrate arg parsing to commander — done (v0.1.0, Commander v14.0.3)
+- [x] Replace raw ANSI with chalk — done (v0.1.0, chalk v5.6.2, centralized in logging/color.ts)
+- [x] Standardize version flag to `-v, --version` — done (v0.1.0, via Commander .version())
+- [x] Add `--version --json` (rich metadata output) — done (v0.1.1, outputs name/version/runtime/platform, verified v0.3.0)
+- [x] Move VERSION to `export const VERSION` in entry point — done (v0.1.0, index.ts, verified v0.3.0)
+- [x] Add `--quiet, -q` global flag — done (v0.1.0, suppresses output + disables color)
+- [x] Add `--verbose` global flag — done (v0.1.0, logs context manager decisions)
+- [x] Add `--json` flag — done (v0.1.0, NDJSON event output)
+- [x] Add `--timing` flag — done (v0.1.1, global flag, outputs to stderr)
+- [x] Switch JSON envelope to `{ success, command }` format — done (v0.1.1, json.ts with jsonOutput/jsonError helpers, verified v0.3.0)
+- [x] Switch to `process.exitCode = 1` (no hard exit) — done (v0.1.1, used throughout, verified v0.3.0)
+- [x] Add typo suggestions for unknown commands — done (v0.1.1, Levenshtein in typo.ts, verified v0.3.0)
+- [x] Add shell completions (`completions <shell>`) — done (v0.1.1, bash/zsh/fish, completions.ts, verified v0.3.0)
+
+### Commands
+- [x] Add `sp upgrade` command (with `--check` and `--json`) — done (v0.1.1, verified v0.3.0)
+- [x] Add `sp doctor` command (with `--fix` and `--json`) — done (v0.1.1, 3 checks, verified v0.3.0)
+
+### Documentation
+- [x] README.md with install, CLI reference, architecture — done
+- [x] CHANGELOG.md in Keep a Changelog format — done
+- [x] Add badges to README (npm, CI, license) — done (v0.1.1, verified v0.3.0)
 
 ---
 
@@ -125,7 +159,7 @@ Last verified: 2026-02-25 (scouted each sub-repo individually).
 ### Infrastructure
 - [ ] Standardize CI workflows across all repos
 - [ ] Add version-sync CI check (package.json vs VERSION constant) — Seeds has this, Canopy doctor checks it
-- [ ] Create `@os-eco/cli-common` shared package — 4/4 tools on commander+chalk now, ready to extract
+- [ ] Create `@os-eco/cli-common` shared package — all 5 tools on commander+chalk now, ready to extract
 
 ### Future
 - [ ] Cross-tool JSON piping tests

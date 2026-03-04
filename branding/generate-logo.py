@@ -8,9 +8,10 @@ SCALE = 3  # render at 3x then downsample for crisp edges
 BG = (22, 27, 34)  # dark background (GitHub dark theme)
 
 LAYERS = [
-    # bottom to top (rendered top-to-bottom: overstory on top)
+    # top to bottom: forest canopy layers down to soil
     {"name": "overstory", "color": (27, 94, 32)},
     {"name": "canopy",    "color": (56, 142, 60)},
+    {"name": "sapling",   "color": (76, 175, 80)},
     {"name": "seeds",     "color": (124, 179, 66)},
     {"name": "mulch",     "color": (139, 90, 43)},
 ]

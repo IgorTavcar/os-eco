@@ -15,8 +15,9 @@ Shared semantic colors handle status and feedback.
 |------|-----------|-----|-------|
 | mulch | brown/soil | `139, 90, 43` | `chalk.rgb(139, 90, 43)` |
 | seeds | sprout green | `124, 179, 66` | `chalk.rgb(124, 179, 66)` |
+| sapling | young tree green | `76, 175, 80` | `chalk.rgb(76, 175, 80)` |
 | canopy | deep green | `56, 142, 60` | `chalk.rgb(56, 142, 60)` |
-| overstory | forest green | `27, 94, 32` | `chalk.rgb(27, 94, 32)` |
+| overstory | forest green | `46, 125, 50` | `chalk.rgb(46, 125, 50)` |
 
 ### Semantic Colors
 
@@ -55,6 +56,7 @@ Tool name bold, description dim.
 ```
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  overstory   orchestration
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  canopy      prompts
+▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  sapling     agents
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  seeds       issues
 ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓  mulch       expertise
 ```
@@ -188,7 +190,8 @@ Run '<alias> <command> --help' for command-specific help.
 
 | Tool | Line 1 |
 |------|--------|
-| mulch | `mulch v0.6.2 — Structured expertise management` |
-| seeds | `seeds v0.2.4 — Git-native issue tracking` |
-| canopy | `canopy v0.2.0 — Prompt management & composition` |
-| overstory | `overstory v0.6.11 — Multi-agent orchestration` |
+| mulch | `mulch v0.6.3 — Structured expertise management` |
+| seeds | `seeds v0.2.5 — Git-native issue tracking` |
+| sapling | `sapling v0.3.0 — Headless coding agent` |
+| canopy | `canopy v0.2.1 — Prompt management & composition` |
+| overstory | `overstory v0.8.4 — Multi-agent orchestration` |

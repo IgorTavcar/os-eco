@@ -1,18 +1,19 @@
 # os-eco Branding & Standards
 
 Canonical reference for visual identity, CLI conventions, and consistency standards
-across the os-eco tooling ecosystem (mulch, seeds, canopy, overstory).
+across the os-eco tooling ecosystem (mulch, seeds, sapling, canopy, overstory).
 
-Last verified: 2026-02-25.
+Last verified: 2026-03-04 (full audit with per-file evidence).
 
 ## Status
 
 | Tool | Version | Branding | CLI Standards | Remaining |
 |------|---------|----------|---------------|-----------|
-| Mulch | 0.6.2 | complete | complete | — |
-| Seeds | 0.2.4 | complete | complete | — |
-| Canopy | 0.2.0 | complete | complete | — |
-| Overstory | 0.6.11 | complete | complete | — |
+| Mulch | 0.6.3 | complete | complete | — |
+| Seeds | 0.2.5 | complete | complete | — |
+| Sapling | 0.3.0 | complete | complete | — |
+| Canopy | 0.2.1 | complete | complete | — |
+| Overstory | 0.8.4 | complete | complete | — |
 
 ## Quick Start
 
